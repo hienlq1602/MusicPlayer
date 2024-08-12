@@ -123,8 +123,6 @@ class MainActivity : SimpleMusicActivity() {
             val isPlaylistFragment = getCurrentFragment() is PlaylistsFragment
             findItem(R.id.create_new_playlist).isVisible = isPlaylistFragment
             findItem(R.id.create_playlist_from_folder).isVisible = isPlaylistFragment
-//            findItem(R.id.import_playlist).isVisible = isPlaylistFragment && isOreoPlus()
-//            findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(com.simplemobiletools.commons.R.bool.hide_google_relations)
         }
     }
 
@@ -173,7 +171,6 @@ class MainActivity : SimpleMusicActivity() {
     private fun initActivity() {
         bus = EventBus.getDefault()
         bus!!.register(this)
-        // trigger a scan first so that the fragments will accurately reflect the scanning state
         mediaScanner.scan()
         initFragments()
         binding.sleepTimerStop.setOnClickListener { stopSleepTimer() }
