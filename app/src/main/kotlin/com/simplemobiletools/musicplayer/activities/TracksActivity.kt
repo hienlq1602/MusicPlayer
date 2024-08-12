@@ -40,8 +40,6 @@ import com.simplemobiletools.musicplayer.models.*
 import org.greenrobot.eventbus.EventBus
 import java.io.OutputStream
 
-// this activity is used for displaying Playlist and Folder tracks, also Album tracks with a possible album header at the top
-// Artists -> Albums -> Tracks
 class TracksActivity : SimpleMusicActivity() {
     private val PICK_EXPORT_FILE_INTENT = 2
 
@@ -83,17 +81,6 @@ class TracksActivity : SimpleMusicActivity() {
         refreshTracks()
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, resultData)
-//        if (requestCode == PICK_EXPORT_FILE_INTENT && resultCode == Activity.RESULT_OK && resultData != null && resultData.data != null) {
-//            try {
-//                val outputStream = contentResolver.openOutputStream(resultData.data!!)
-////                exportPlaylistTo(outputStream)
-//            } catch (e: Exception) {
-//                showErrorToast(e)
-//            }
-//        }
-//    }
 
     private fun refreshMenuItems() {
         binding.tracksToolbar.menu.apply {
@@ -101,7 +88,6 @@ class TracksActivity : SimpleMusicActivity() {
             findItem(R.id.sort).isVisible = sourceType != TYPE_ALBUM
             findItem(R.id.add_file_to_playlist).isVisible = sourceType == TYPE_PLAYLIST
             findItem(R.id.add_folder_to_playlist).isVisible = sourceType == TYPE_PLAYLIST
-//            findItem(R.id.export_playlist).isVisible = sourceType == TYPE_PLAYLIST && isOreoPlus()
         }
     }
 
@@ -112,7 +98,6 @@ class TracksActivity : SimpleMusicActivity() {
                 R.id.sort -> showSortingDialog()
                 R.id.add_file_to_playlist -> addFileToPlaylist()
                 R.id.add_folder_to_playlist -> addFolderToPlaylist()
-//                R.id.export_playlist -> tryExportPlaylist()
                 else -> return@setOnMenuItemClickListener false
             }
             return@setOnMenuItemClickListener true
@@ -382,51 +367,4 @@ class TracksActivity : SimpleMusicActivity() {
         }
     }
 
-//    private fun tryExportPlaylist() {
-//        if (isQPlus()) {
-//            ExportPlaylistDialog(this, config.lastExportPath, true) { file ->
-//                Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-//                    type = MIME_TYPE_M3U
-//                    putExtra(Intent.EXTRA_TITLE, file.name)
-//                    addCategory(Intent.CATEGORY_OPENABLE)
-//
-//                    try {
-//                        startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
-//                    } catch (e: ActivityNotFoundException) {
-//                        toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
-//                    } catch (e: Exception) {
-//                        showErrorToast(e)
-//                    }
-//                }
-//            }
-//        } else {
-//            handlePermission(getPermissionToRequest()) { granted ->
-//                if (granted) {
-//                    ExportPlaylistDialog(this, config.lastExportPath, false) { file ->
-//                        getFileOutputStream(file.toFileDirItem(this), true) { outputStream ->
-//                            exportPlaylistTo(outputStream)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-
-//    private fun exportPlaylistTo(outputStream: OutputStream?) {
-//        val tracks = getTracksAdapter()?.items
-//        if (tracks.isNullOrEmpty()) {
-//            toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
-//            return
-//        }
-//
-//        M3uExporter(this).exportPlaylist(outputStream, tracks) { result ->
-//            toast(
-//                when (result) {
-//                    ExportResult.EXPORT_OK -> com.simplemobiletools.commons.R.string.exporting_successful
-//                    ExportResult.EXPORT_PARTIAL -> com.simplemobiletools.commons.R.string.exporting_some_entries_failed
-//                    else -> com.simplemobiletools.commons.R.string.exporting_failed
-//                }
-//            )
-//        }
-//    }
 }

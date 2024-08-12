@@ -22,7 +22,6 @@ class ManageVisibleTabsDialog(val activity: BaseSimpleActivity, val callback: (r
             put(TAB_ARTISTS, binding.manageVisibleTabsArtists)
             put(TAB_ALBUMS, binding.manageVisibleTabsAlbums)
             put(TAB_TRACKS, binding.manageVisibleTabsTracks)
-//            put(TAB_GENRES, binding.manageVisibleTabsGenres)
         }
 
         if (!isQPlus()) {

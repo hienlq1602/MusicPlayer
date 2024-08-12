@@ -40,15 +40,11 @@ class SettingsActivity : SimpleControllerActivity() {
     override fun onResume() {
         super.onResume()
         setupToolbar(binding.settingsToolbar, NavigationIcon.Arrow)
-
-//        setupPurchaseThankYou()
-//        setupCustomizeColors()
         setupCustomizeWidgetColors()
         setupUseEnglish()
         setupLanguage()
         setupManageExcludedFolders()
         setupManageShownTabs()
-//        setupSwapPrevNext()
         setupReplaceTitle()
         setupGaplessPlayback()
         updateTextColors(binding.settingsNestedScrollview)
@@ -58,19 +54,6 @@ class SettingsActivity : SimpleControllerActivity() {
         }
     }
 
-//    private fun setupPurchaseThankYou() = binding.apply {
-//        settingsPurchaseThankYouHolder.beGoneIf(isOrWasThankYouInstalled())
-//        settingsPurchaseThankYouHolder.setOnClickListener {
-//            launchPurchaseThankYouIntent()
-//        }
-//    }
-
-//    private fun setupCustomizeColors() = binding.apply {
-//        settingsColorCustomizationLabel.text = getCustomizeColorsString()
-//        settingsColorCustomizationHolder.setOnClickListener {
-//            handleCustomizeColorsClick()
-//        }
-//    }
 
     private fun setupCustomizeWidgetColors() {
         binding.settingsWidgetColorCustomizationHolder.setOnClickListener {
@@ -100,13 +83,6 @@ class SettingsActivity : SimpleControllerActivity() {
         }
     }
 
-//    private fun setupSwapPrevNext() = binding.apply {
-//        settingsSwapPrevNext.isChecked = config.swapPrevNext
-//        settingsSwapPrevNextHolder.setOnClickListener {
-//            settingsSwapPrevNext.toggle()
-//            config.swapPrevNext = settingsSwapPrevNext.isChecked
-//        }
-//    }
 
     private fun setupReplaceTitle() = binding.apply {
         settingsShowFilename.text = getReplaceTitleText()

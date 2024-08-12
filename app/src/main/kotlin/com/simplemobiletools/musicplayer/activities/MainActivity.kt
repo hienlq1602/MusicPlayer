@@ -150,11 +150,8 @@ class MainActivity : SimpleMusicActivity() {
                 R.id.sleep_timer -> showSleepTimer()
                 R.id.create_new_playlist -> createNewPlaylist()
                 R.id.create_playlist_from_folder -> createPlaylistFromFolder()
-//                R.id.import_playlist -> tryImportPlaylist()
                 R.id.equalizer -> launchEqualizer()
-//                R.id.more_apps_from_us -> launchMoreAppsFromUsIntent()
                 R.id.settings -> launchSettings()
-//                R.id.about -> launchAbout()
                 else -> return@setOnMenuItemClickListener false
             }
             return@setOnMenuItemClickListener true
